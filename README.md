@@ -612,6 +612,6 @@ ___
     <img src="/img/logo.png">
 </div>
 
-**    ©     [DOVIS YESICA]   2024  . Todos los derechos reservados.   Gracias TOTALES !!!   **
+**    ©     [DOVIS YESICA]   2024  . Todos los derechos reservados.   Gracias TOTALES / Goal achieved!!!!   **
 
 ___

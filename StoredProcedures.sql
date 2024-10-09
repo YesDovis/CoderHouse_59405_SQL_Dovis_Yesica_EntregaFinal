@@ -57,7 +57,6 @@ BEGIN
     FROM Productos
     WHERE id_producto = p_id_producto;
 END //
-
 DELIMITER ;
 
 /* llamar al procedimiento*/
