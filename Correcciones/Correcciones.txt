@@ -1,0 +1,93 @@
+Buenas tardes Yesi, procedo a darte el feedback del desafio. Tu entrega esta muy bien solo te hago unas correcciones. 
+Fijate que en tu vista de nombre Vista_Clientes_Nombre_J, tenes un error en la condicion de tu consulta, ya que en todo caso el nombre del rol por el queres filtrar deberia ser rol_usuario y no rol_cliente como habias puesto vos.
+
+Condición actualizada: Cambié la condición en el WHERE para filtrar por r.nombre = 'rol_usuario' en lugar de r.nombre = 'rol_cliente'.
+CREATE VIEW Vista_Clientes_Nombre_J AS
+SELECT 
+    u.id_usuario,
+    u.nombre,
+    u.apellidos,
+    u.email
+FROM 
+    Usuarios u
+JOIN Usuarios_Roles ur ON u.id_usuario = ur.id_usuario
+JOIN Roles r ON ur.id_rol = r.id_rol
+WHERE 
+    r.nombre = 'rol_usuario' AND  -- Cambiado de 'rol_cliente' a 'rol_usuario'
+    u.nombre LIKE 'J%';
+
+Consulta para ver los resultados de la vista
+SELECT * FROM Vista_Clientes_Nombre_J;
+Carpeta Correciones : Correccion 1 Vista_Clientes_Nombre_J 
+-----------------------------------------------------------------------------------------------------------------
+2) En terminos generales tus vistas estan muy bien, solo te hago mencion nomas para que estes al tanto, de que en tu tabla usuarios_roles, hay usuarios sin roles asignados, y con esto me refiero a que vos tenes 15 usuarios, y en la tabla usuarios_roles, solo le asignaste roles a los usuarios que van del 1 al 10, y te quedaron 5 usuarios que son los que van del 11 al 15 sin roles asignados. Eso como mencion aparte nomas para que lo tengas en cuenta.
+Correccion:
+INSERT INTO Usuarios_Roles (id_usuario, id_rol) VALUES
+(11, 1),  -- Esteban
+(12, 1),  -- Jimena
+(13, 1),  -- Juan
+(14, 1),  -- Jose
+(15, 1),  -- Maria
+(23, 1);  -- Leandra
+ Carpeta Correciones : Correccion 2 usuarios_roles
+-----------------------------------------------------------------------------------------------------------------
+Luego en tu funcion de nombre  localidad_con_mas_pedidos, te falto determinar el tipo de tu funcion que en este caso el tipo de la funcion es READS SQL DATA, ya que se utiliza SQL solo para leer datos de las tablas pedidos y direcciones, y no se alteran datos ni se realizan acciones que modifiquen el estado de la base de datos. Pero dejando de lado eso que te comente, tus funciones estan muy bien y tus procedimientos almacenados estan muy bien. 
+
+DELIMITER //
+CREATE FUNCTION localidad_con_mas_pedidos()
+RETURNS VARCHAR(20)
+READS SQL DATA
+BEGIN
+    DECLARE localidad_mayor VARCHAR(100);
+    
+    SELECT d.localidad
+    INTO localidad_mayor
+    FROM Pedidos p
+    JOIN Direcciones d ON p.id_direccion = d.id_direccion
+    GROUP BY d.localidad
+    ORDER BY COUNT(p.id_pedido) DESC
+    LIMIT 1;
+
+    RETURN localidad_mayor;
+END//
+DELIMITER ;
+SELECT localidad_con_mas_pedidos();
+
+
+/*Uso de la función:*/
+
+SELECT localidad_con_mas_pedidos();
+
+
+Correccion 3 localidad_con_mas_pedidos
+
+
+
+----------------------------------------------------------------------------------------------
+
+
+Despues con respecto a tus triggers, observo que me dejaste sentencias para pobrar los triggers pero recorda que en prueba que me dejaste:
+
+INSERT INTO `cerveceria_la_birra_es_bella`.`usuarios` (`nombre`, `apellidos`, `fecha_nacimiento`, `email`, `password`) VALUES 
+
+('Leandra', 'Trigger', '1980-07-14', 'lean.trigger@mail.com', 'Leandra');
+
+('Cesar', 'Thor', '1987-07-20', 'cesar.thor@mail.com', 'Cesar');
+
+('Pedro', 'Pedro ', '2000-10-58', 'pedro.pedro@mail.com', 'Pedro');
+
+El punto y coma solo se pone al final de todo, y en los demas valores que especificas al final del parentesis, se pone la coma, y  te quedaria de esta forma:
+
+INSERT INTO `cerveceria_la_birra_es_bella`.`usuarios` (`nombre`, `apellidos`, `fecha_nacimiento`, `email`, `password`) VALUES
+
+('Leandra', 'Trigger', '1980-07-14', 'lean.trigger@mail.com', 'Leandra'),
+
+('Cesar', 'Thor', '1987-07-20', 'cesar.thor@mail.com', 'Cesar'),
+
+('Pedro', 'Pedro ', '2000-10-58', 'pedro.pedro@mail.com', 'Pedro');
+
+Ademas fijate que en el ultimo insert, para lo que fecha de nacimiento pusiste para el dia el valor 58, ojo con eso.
+
+Despues lo demas esta perfecto Yesi. Realizaste un muy buen trabajo.
+
+Solucion en README lineas futuras.

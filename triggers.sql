@@ -70,13 +70,13 @@ DELIMITER ;
 /* Creacion de registros */
 
 INSERT INTO `cerveceria_la_birra_es_bella`.`usuarios` (`nombre`, `apellidos`, `fecha_nacimiento`, `email`, `password`) VALUES 
-('Leandra', 'Trigger', '1980-07-14', 'lean.trigger@mail.com', 'Leandra');
-('Cesar', 'Thor', '1987-07-20', 'cesar.thor@mail.com', 'Cesar');
+('Leandra', 'Trigger', '1980-07-14', 'lean.trigger@mail.com', 'Leandra'),
+('Cesar', 'Thor', '1987-07-20', 'cesar.thor@mail.com', 'Cesar'),
 ('Pedro', 'Pedro ', '2000-10-58', 'pedro.pedro@mail.com', 'Pedro');
 INSERT INTO `cerveceria_la_birra_es_bella`.`productos` (`nombre`, `descripcion`, `precio`, `stock`) VALUES
 ('Mur Fruit', 'Cerveza Color Rubi', '4999.99', '7');
 
-UPDATE `cerveceria_la_birra_es_bella`.`usuarios` SET `fecha_nacimiento` = '2000-05-07' WHERE (`id_usuario` = '25');
+UPDATE `cerveceria_la_birra_es_bella`.`usuarios` SET `fecha_nacimiento` = '2000-05-07' WHERE (`id_usuario` = '25'),
 UPDATE `cerveceria_la_birra_es_bella`.`usuarios` SET `email` = 'hikary.son@mail.com' WHERE (`id_usuario` = '26');
 
 DELETE FROM `cerveceria_la_birra_es_bella`.`usuarios` WHERE (`id_usuario` = '26');

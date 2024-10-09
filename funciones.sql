@@ -23,6 +23,7 @@ SELECT contar_usuarios_por_letra_inicial('J');
 DELIMITER //
 CREATE FUNCTION localidad_con_mas_pedidos()
 RETURNS VARCHAR(20)
+READS SQL DATA
 BEGIN
     DECLARE localidad_mayor VARCHAR(100);
     
@@ -37,6 +38,7 @@ BEGIN
     RETURN localidad_mayor;
 END//
 DELIMITER ;
+SELECT localidad_con_mas_pedidos();
 
 
 /*Uso de la función:*/

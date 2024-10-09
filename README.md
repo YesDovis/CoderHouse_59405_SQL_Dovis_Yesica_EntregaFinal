@@ -308,6 +308,8 @@ ___
 
 + Valor de retorno: La función devuelve una cadena (VARCHAR(20)) que representa la localidad con más pedidos.
 
+Cláusula READS SQL DATA: Indica que la función solo lee datos, lo cual es correcto y debería ser parte de la definición de la función para dejar claro su comportamiento.
+
 <div aling="center">
     <img src="/img/CREATE FUNCTION localidad_con_mas_pedidos.jpg">
 
@@ -535,6 +537,13 @@ ___
 
 ### Informes generados en base a la información de la base:
 
+`Informe de Ventas Totales por Producto`
+Este informe muestra las ventas totales de cada producto en "La Birra es Bella". Incluye la cantidad vendida y el ingreso total generado. Ayuda a identificar qué productos son los más vendidos y cuáles generan más ingresos, facilitando la toma de decisiones sobre inventario y promociones.
+
+<div aling="center">
+    <img src="/img/informe1.jpg">
+</div>
+
 ### Herramientas y tecnologías usadas:
 
 Para la creación de mi base de datos relacional, utilicé varias herramientas clave. Primero, diseñé el esquema usando Visual Paradigm Online, que me permitió visualizar las entidades y relaciones de forma clara. Luego, con MySQL Workbench, implementé el esquema y gestioné la base de datos.
@@ -546,6 +555,35 @@ Este conjunto de herramientas facilitó el diseño, implementación y gestión d
 
 ### Futuras líneas
 
++ Correspondiendo a la correccion del tutor {el ultimo insert, para lo que fecha de nacimiento pusiste para el dia el valor 58, ojo con eso.}
+
+('Pedro', 'Pedro ', '2000-10-58', 'pedro.pedro@mail.com', 'Pedro');
+
+`Se implementara la corrección de fechas en inserciones de usuarios`
+
+En la base de datos, es fundamental mantener la integridad de los datos, especialmente en campos críticos como las fechas de nacimiento. Para evitar errores como el ingreso de fechas con días no válidos (por ejemplo, el día "58" en una fecha), se ha implementado un trigger en la tabla Usuarios. Este trigger se encarga de verificar que el día de cualquier fecha ingresada esté dentro del rango permitido (del 1 al 31), impidiendo la inserción de registros con fechas incorrectas.
+
+Entonces podemos crear un trigger que verifique que el valor del día en las fechas de nacimiento ingresadas esté dentro del rango válido (del 1 al 31). Si el día está fuera de ese rango, se generará un error y no se permitirá la inserción de ese registro.
+
+`Codigo`
+
+<div aling="center">
+    <img src="/img/lineasfuras.jpg">
+</div>
+
+`Datos Explicativos`
+
+`BEFORE INSERT ON Usuarios` El trigger se activa antes de que se inserte un nuevo registro en la tabla Usuarios.
+`FOR EACH ROW` Se aplica a cada nuevo registro.
+`DECLARE dia INT` Se declara una variable dia para almacenar el día de la fecha de nacimiento.
+`SET dia = DAY(NEW.fecha_nacimiento)` Se extrae el día de la fecha de nacimiento que se intenta insertar.
+`Condición IF` Si el día es menor que 1 o mayor que 31, el trigger genera un error utilizando SIGNAL SQLSTATE '45000', impidiendo la inserción.
+`Mensaje personalizado` Si se produce el error, se muestra el mensaje "Error: El día de la fecha de nacimiento debe estar entre 1 y 31."
+
++ Para ejecutar el trigger que valida los días en la tabla Usuarios Seleccionando la base de datos cerveceria_la_birra_es_bella, creando el trigger con el codigo futuras.sql / Ejecutar el script y validar con:
+
+INSERT INTO Usuarios (nombre, apellidos, fecha_nacimiento, email, username) 
+VALUES ('Pedro', 'Pedro', '2000-10-58', 'pedro.pedro@mail.com', 'Pedro');
 
 ___
 
