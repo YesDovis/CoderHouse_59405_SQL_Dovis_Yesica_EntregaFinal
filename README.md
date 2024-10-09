@@ -533,18 +533,31 @@ ___
 </div>
 
 ___
-___
 
-### Informes generados en base a la información de la base:
+## Informes generados en base a la información de la base:
 
 `Informe de Ventas Totales por Producto`
-Este informe muestra las ventas totales de cada producto en "La Birra es Bella". Incluye la cantidad vendida y el ingreso total generado. Ayuda a identificar qué productos son los más vendidos y cuáles generan más ingresos, facilitando la toma de decisiones sobre inventario y promociones.
+
++ Este informe muestra las ventas totales de cada producto en "La Birra es Bella". Incluye la cantidad vendida y el ingreso total generado. Ayuda a identificar qué productos son los más vendidos y cuáles generan más ingresos, facilitando la toma de decisiones sobre inventario y promociones.
 
 <div aling="center">
     <img src="/img/informe1.jpg">
 </div>
 
-### Herramientas y tecnologías usadas:
+
+`Informe de Pedidos por Cliente`
+
++ Este informe detalla los pedidos realizados por cada cliente en "La Birra es Bella". Incluye información sobre el cliente, la fecha del pedido y los productos adquiridos. Es útil para entender el comportamiento de compra de los clientes y mejorar el servicio al cliente.
+
+El resultado está ordenado en función de los productos que más han recaudado
+
+<div aling="center">
+    <img src="/img/informe2.jpg">
+</div>
+
+___
+
+## Herramientas y tecnologías usadas:
 
 Para la creación de mi base de datos relacional, utilicé varias herramientas clave. Primero, diseñé el esquema usando Visual Paradigm Online, que me permitió visualizar las entidades y relaciones de forma clara. Luego, con MySQL Workbench, implementé el esquema y gestioné la base de datos.
 
@@ -552,6 +565,7 @@ Además, usé XAMPP para configurar un entorno de desarrollo local con MySQL y p
 
 Este conjunto de herramientas facilitó el diseño, implementación y gestión de mi base de datos.
 
+___
 
 ### Futuras líneas
 
@@ -571,13 +585,19 @@ Entonces podemos crear un trigger que verifique que el valor del día en las fec
     <img src="/img/lineasfuras.jpg">
 </div>
 
+
 `Datos Explicativos`
 
 `BEFORE INSERT ON Usuarios` El trigger se activa antes de que se inserte un nuevo registro en la tabla Usuarios.
+
 `FOR EACH ROW` Se aplica a cada nuevo registro.
+
 `DECLARE dia INT` Se declara una variable dia para almacenar el día de la fecha de nacimiento.
+
 `SET dia = DAY(NEW.fecha_nacimiento)` Se extrae el día de la fecha de nacimiento que se intenta insertar.
+
 `Condición IF` Si el día es menor que 1 o mayor que 31, el trigger genera un error utilizando SIGNAL SQLSTATE '45000', impidiendo la inserción.
+
 `Mensaje personalizado` Si se produce el error, se muestra el mensaje "Error: El día de la fecha de nacimiento debe estar entre 1 y 31."
 
 + Para ejecutar el trigger que valida los días en la tabla Usuarios Seleccionando la base de datos cerveceria_la_birra_es_bella, creando el trigger con el codigo futuras.sql / Ejecutar el script y validar con:
@@ -592,6 +612,6 @@ ___
     <img src="/img/logo.png">
 </div>
 
-** © [DOVIS YESICA] 2024. Todos los derechos reservados.**
+**    ©     [DOVIS YESICA]   2024  . Todos los derechos reservados.   Gracias TOTALES !!!   **
 
 ___
