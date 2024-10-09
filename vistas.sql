@@ -13,7 +13,7 @@ WHERE
 
 SELECT * FROM Vista_Usuarios_Administradores;
 
------------------------------------------------------------
+--------------------------Correccion---------------------------------
 CREATE VIEW Vista_Clientes_Nombre_J AS
 SELECT 
     u.id_usuario,
@@ -25,9 +25,10 @@ FROM
 JOIN Usuarios_Roles ur ON u.id_usuario = ur.id_usuario
 JOIN Roles r ON ur.id_rol = r.id_rol
 WHERE 
-    r.nombre = 'rol_cliente' AND
+    r.nombre = 'rol_usuario' AND  -- Cambiado de 'rol_cliente' a 'rol_usuario'
     u.nombre LIKE 'J%';
-    
+
+-- Consulta para ver los resultados de la vista
 SELECT * FROM Vista_Clientes_Nombre_J;
 
 

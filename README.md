@@ -182,19 +182,19 @@ El WHERE filtra los resultados para obtener únicamente aquellos registros donde
 ___
  
 
-2. Nombre de la vista: "Vista_Usuarios_Nombre_J"
+2. Nombre de la vista: "Vista_Clientes_Nombre_J"
 
 ` Descripción`  
-+ Esta vista muestra todos los usuarios cuyo nombre comienza con la letra "J".
++  Muestra una lista de clientes cuyos nombres comienzan con la letra 'J'.
 
 ` Objetivo / Datos ` 
 
-+ crear una vista llamada Vista_Usuarios_Nombre_J que muestra los usuarios de la tabla Usuarios cuyos nombres comienzan con la letra "J". La vista incluye las columnas id_usuario, nombre, apellidos y email.La misma modificando La cláusula LIKE  se puede utilizar para buscar cualquiel nombre segun necesidad > 'J%'  'Y%'  'D%' etc.
++ Crear una vista llamada Vista_Clientes_Nombre_J que muestra los usuarios de la tabla Usuarios cuyos nombres comienzan con la letra "J". La vista incluye las columnas id_usuario, nombre, apellidos y email. La cláusula LIKE se puede modificar para buscar cualquier nombre según la necesidad, como por ejemplo, 'Y%', 'D%', etc.
 
 ` Consulta sobre usuario cuyo nombre comienza con la letra "J" ` 
 
 <div aling="center">
-    <img src="/img/Vista_Usuarios_Nombre_J.jpg">
+    <img src="/img/Vista_Clientes_Nombre_J.jpg">
 </div>
 
 ___
